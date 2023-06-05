@@ -24,9 +24,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_EC2_METADATA_DISABLED: true
+        with:
+          node-version: '16'
         run: |
           aws s3 sync \
             --region ap-northeast-2 \
-            build s3://fe-106-jeongjwon-s3\
+            build s3://fe-106-jeongjwon-s3 \
             --delete
         working-directory: ./my-agora-states-client-react
